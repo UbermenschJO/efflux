@@ -214,9 +214,9 @@ public abstract class AbstractRtpSession implements RtpSession, TimerTask {
 
         DatagramChannelFactory factory;
         if (this.useNio) {
-            factory = new OioDatagramChannelFactory(Executors.newCachedThreadPool());
+        	factory = new NioDatagramChannelFactory(Executors.newCachedThreadPool());
         } else {
-            factory = new NioDatagramChannelFactory(Executors.newCachedThreadPool());
+        	factory = new OioDatagramChannelFactory(Executors.newCachedThreadPool());
         }
 
         this.dataBootstrap = new ConnectionlessBootstrap(factory);
